@@ -1,15 +1,17 @@
 import React from "react";
 import { useState } from "react";
-const Login = () => {
+const Login = ({ handleLogin }) => {
+  // console.log(handleLogin)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("E-mail:" , email);
-    console.log("Password:", password)
+    handleLogin(email, password);
+    // console.log("E-mail:" , email);
+    // console.log("Password:", password)
 
-    setEmail("")
-    setPassword("")
+    setEmail("");
+    setPassword("");
   };
   return (
     <div className="flex items-center justify-center h-screen w-screen">
@@ -21,20 +23,20 @@ const Login = () => {
           className="flex flex-col items-center justify-center"
         >
           <input
-          value={email}
-          onChange={(e)=>{
-           setEmail(e.target.value)
-          }}
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
             required
             className="border-2 border-emerald-600 py-4 px-3 rounded-full text-xl outline-none bg-transparent placeholder:text-gray-400"
             type="email"
             placeholder="Enter email"
           />
           <input
-          value={password}
-          onChange={(e)=>{
-         setPassword(e.target.value)
-          }}
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
             required
             className="border-2 mt-4 border-emerald-600 py-4 px-3 rounded-full text-xl outline-none bg-transparent placeholder:text-gray-400"
             type="password"
